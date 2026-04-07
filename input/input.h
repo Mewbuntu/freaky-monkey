@@ -7,12 +7,12 @@
 
 #include "../engine/engine.h"
 
-extern float deltaTime;
-
-namespace Input
+namespace NEInput
 {
 	void processInput(GLFWwindow* window);
 	void getDeltaTime();
+
+	extern float deltaTime;
 }
 
 #endif // !INPUT_H

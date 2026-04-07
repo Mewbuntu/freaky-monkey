@@ -2,16 +2,15 @@
 #include "renderer/renderer.h"
 #include "input/input.h"
 
-
 //  NOTE:   Temporary until direct resizing in-engine is possible
 const int TEMP_WINDOW_WIDTH = 1280;
 const int TEMP_WINDOW_HEIGHT = 720;
 
 int main()
 {
-    Engine::initGLFW();
+    NEEngine::initGLFW();
 
-    GLFWwindow* window = glfwCreateWindow(TEMP_WINDOW_WIDTH, TEMP_WINDOW_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(TEMP_WINDOW_WIDTH, TEMP_WINDOW_HEIGHT, "Window", NULL, NULL);
 
     if (window == NULL)
     {
@@ -29,20 +28,27 @@ int main()
         return -1;
     }
 
-    glfwSetFramebufferSizeCallback(window, Engine::framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(window, NEEngine::framebuffer_size_callback);
 
-    Renderer::generateBuffers();
+    std::cout << "Starting Program..." << std::endl;
 
+    NERenderer::doShaderCrap();
+
+    //  Main loop
     while (!glfwWindowShouldClose(window))
     {
-        Input::processInput(window);
-        Input::getDeltaTime();
+        NEInput::processInput(window);
+        NEInput::getDeltaTime();
 
-        Renderer::startRendering();
+        std::cout << NEInput::deltaTime * 2 << std::endl;
+
+        NERenderer::startRendering();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    std::cout << "Program ending..." << std::endl;
 
     glfwTerminate();
 

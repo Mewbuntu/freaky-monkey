@@ -4,9 +4,9 @@
 
 #include "../engine/engine.h"
 
-namespace Renderer
+namespace NERenderer
 {
-	void generateBuffers();
+	void doShaderCrap();
 	void startRendering();
 }
 

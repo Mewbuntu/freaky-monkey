@@ -2,9 +2,9 @@
 
 std::chrono::steady_clock::time_point lastUpdate;
 
-float deltaTime = 0.0f;
+float NEInput::deltaTime = 0.0f;
 
-void Input::processInput(GLFWwindow* window)
+void NEInput::processInput(GLFWwindow* window)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
@@ -12,7 +12,7 @@ void Input::processInput(GLFWwindow* window)
 	}
 }
 
-void Input::getDeltaTime()
+void NEInput::getDeltaTime()
 {
 	auto now = std::chrono::steady_clock::now();
 

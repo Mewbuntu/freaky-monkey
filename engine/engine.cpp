@@ -3,7 +3,7 @@
 /// <summary>
 /// Testing.
 /// </summary>
-void Engine::initGLFW() 
+void NEEngine::initGLFW() 
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -15,7 +15,25 @@ void Engine::initGLFW()
 #endif // __APPLE__
 }
 
-void Engine::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void NEEngine::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+}
+
+void NEEngine::createVertexShader(unsigned int vertexShader, const char* vertexShaderSource)
+{
+    vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+
+    glCompileShader(vertexShader);
+}
+
+void NEEngine::createFragmentShader(unsigned int fragmentShader, const char* fragmentShaderSource)
+{
+    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+
+    glCompileShader(fragmentShader);
 }
